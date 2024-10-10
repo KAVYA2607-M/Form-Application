@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 5px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .grid div {
+      padding: 10px;
+      background-color: #f4f4f4;
+      border: 1px solid #ccc;
+      text-align: center;
+      
+    }
+    
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .edit, .delete {
+      cursor: pointer;
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 3px;
+    }
+
+    .delete {
+      background-color: #dc3545;
+    }
+
+    .edit:hover {
+      background-color: #0056b3;
+    }
+
+    .delete:hover {
+      background-color: #c82333;
+    }
+
+    .add-employee {
+      display: block;
+      margin: 20px 0;
+      text-align: center;
+      padding: 10px;
+      background-color: #ee54e9;
+      color: rgb(110, 34, 34);
+      text-decoration: none;
+      border-radius: 3px;
+    }
+
+    .add-employee:hover {
+      background-color: #136eb3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Employee List</h1>
+  <div class="grid" id="employeeGrid">
+    name
+    <!-- Employee details will be injected here -->
+  </div>
+
+  <a href="Form Application.html" class="add-employee">Add</a>
+
+  <script>
+    const employeeGrid = document.getElementById('employeeGrid');
+
+    function loadEmployees() {
+       employeeGrid.innerHTML = ''; // Clear the grid
+       const employees = JSON.parse(localStorage.getItem('employees')) || [];
+          // ---put into the loop
+       employees.forEach((employee, index) => {
+       const { name, Id, email, mobile, date } = employee;
+          //----Create seperate div for each element
+        const nameDiv = document.createElement('div');
+        const IdDiv = document.createElement('div');
+        const emailDiv = document.createElement('div');
+        const mobileDiv = document.createElement('div');
+        const dateDiv = document.createElement('div');
+        const actionDiv = document.createElement('div');
+        //----Access textcontent only(inside a div element)
+        nameDiv.textContent = name;
+        IdDiv.textContent = Id;
+        emailDiv.textContent = email;
+        mobileDiv.textContent = mobile;
+        dateDiv.textContent = date;
+        // ----Edit button function
+        const editBtn = document.createElement('button');
+        editBtn.textContent = 'Edit';
+        editBtn.classList.add('edit');
+        editBtn.addEventListener('click', () => editEmployee(index));
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.classList.add('delete');
+        deleteBtn.addEventListener('click', () => deleteEmployee(index));
+
+        const buttonContainer = document.createElement('div');
+        buttonContainer.classList.add('buttons');
+        buttonContainer.appendChild(editBtn);
+        buttonContainer.appendChild(deleteBtn);
+
+        actionDiv.appendChild(buttonContainer);
+
+        employeeGrid.appendChild(nameDiv);
+        employeeGrid.appendChild(IdDiv);
+        employeeGrid.appendChild(emailDiv);
+        employeeGrid.appendChild(mobileDiv);
+        employeeGrid.appendChild(dateDiv);
+        employeeGrid.appendChild(actionDiv);
+      });
+    }
+
+    function editEmployee(index) {
+      const employees = JSON.parse(localStorage.getItem('employees')) || [];
+      const employee = employees[index];
+      const name = prompt('Edit Name', employee.name);
+      const Id = prompt('Edit Id', employee.Id);
+      const email = prompt('Edit Email', employee.email);
+      const mobile = prompt('Edit Mobile', employee.mobile);
+      const date = prompt('Edit Date', employee.date);
+      if (name && Id && email && mobile && date) {
+        employees[index] = { name, Id, email, mobile, date };
+        localStorage.setItem('employees', JSON.stringify(employees));
+        loadEmployees();
+      } else {
+        alert('All fields are required!');
+      }
+    }
+
+    function deleteEmployee(index) {
+      const employees = JSON.parse(localStorage.getItem('employees')) || [];
+      employees.splice(index, 1);
+      localStorage.setItem('employees', JSON.stringify(employees));
+      loadEmployees();
+    }
+
+    window.onload = loadEmployees; // Load employees when the page loads
+  </script>
+
+</body>
+</html>

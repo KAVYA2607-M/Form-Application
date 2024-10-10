@@ -1,0 +1,173 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Application</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>Employment Details</h1>
+        <form>
+            <div>
+                <label for="name" name="name">Name</label>
+                <input class="input" id="name" type="text" placeholder="Enter your Name" required />
+            </div><br>
+            <div>
+                <label  name="Id">Employment ID</label>
+                <input class="input" id="Id" type="text" required />
+            </div><br>
+            <div>
+                <label name="roll">Roll</label>
+                <input class="input" id="roll" type="text" required />
+            </div><br>
+            <div>
+                <label  name="address">Address</label>
+                <input class="input" id="address" type="text">
+            </div><br>
+            <div>
+                <label  name="email">Email ID</label>
+                <input class="input" id="email" type="email">
+            </div><br>
+            <div>
+                <label  name="mobile">Mobile No</label>
+                <input class="input" id="mobile" type="number">
+            </div><br>
+            <div>
+                <label  name="date">Joining Date</label>
+                <input class="input" id="date" type="date"></input>
+            </div><br>
+            <div>
+                <label  name="myfile">Select a File</label>
+                <input class="input" id="myfile" type="file"></input>
+            </div><br>
+
+
+            <div id="btn">
+                <div><button id="submit">Submit</button></div>
+                <div><button id="cancel">Cancel</button></div>
+                <a href="Employe_details.html">view page</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('submit').addEventListener('click', function() {
+          const name = document.getElementById('name').value;
+          const Id = document.getElementById('Id').value;
+          const roll = document.getElementById('roll').value;
+          const address = document.getElementById('address').value;
+          const email = document.getElementById('email').value;
+          const mobile = document.getElementById('mobile').value;
+          const date = document.getElementById('date').value;
+          const file = document.getElementById('file').value;
+    
+          if (name && Id && roll && address && email && mobile && date && file) {
+            const employees = JSON.parse(localStorage.getItem('employees')) || [];
+            employees.push({ name,Id,roll,address,email,mobile,date,file});
+            localStorage.setItem('employees', JSON.stringify(employees));
+            alert('Employee added successfully!');
+            document.getElementById('name').value = '';
+            document.getElementById('Id').value = '';
+            document.getElementById('roll').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('mobile').value = '';
+            document.getElementById('date').value = '';
+            document.getElementById('file').value = '';
+          } else {
+            alert('Please fill in all fields!');
+          }
+        });
+      </script>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Application</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>Employment Details</h1>
+        <form id="employeeForm">
+            <div>
+                <label for="name" name="name">Name</label>
+                <input class="input" id="name" type="text" placeholder="Enter your Name" required />
+            </div><br>
+            <div>
+                <label for="Id" name="Id">Employment ID</label>
+                <input class="input" id="Id" type="text" required />
+            </div><br>
+            <div>
+                <label for="roll" name="roll">Roll</label>
+                <input class="input" id="roll" type="text" required />
+            </div><br>
+            <div>
+                <label for="address" name="address">Address</label>
+                <input class="input" id="address" type="text">
+            </div><br>
+            <div>
+                <label for="email" name="email">Email ID</label>
+                <input class="input" id="email" type="email">
+            </div><br>
+            <div>
+                <label for="mobile" name="mobile">Mobile No</label>
+                <input class="input" id="mobile" type="number">
+            </div><br>
+            <div>
+                <label for="date" name="date">Joining Date</label>
+                <input class="input" id="date" type="date">
+            </div><br>
+            <div>
+                <label for="myfile" name="myfile">Select a File</label>
+                <input class="input" id="myfile" type="file">
+            </div><br>
+
+            <div id="btn">
+                <button type="submit" id="submit">Submit</button>
+                <button type="reset" id="cancel">Cancel</button>
+                <a href="Employe_details.html">View Page</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('employeeForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent form from reloading the page
+          
+          const name = document.getElementById('name').value;
+          const Id = document.getElementById('Id').value;
+          const roll = document.getElementById('roll').value;
+          const address = document.getElementById('address').value;
+          const email = document.getElementById('email').value;
+          const mobile = document.getElementById('mobile').value;
+          const date = document.getElementById('date').value;
+          const fileInput = document.getElementById('myfile');
+          const file = fileInput.files.length > 0 ? fileInput.files[0].name : ''; // Get the file name
+    
+          if (name && Id && roll && address && email && mobile && date && file) {
+            const employees = JSON.parse(localStorage.getItem('employees')) || [];
+            employees.push({ name, Id, roll, address, email, mobile, date, file });
+            localStorage.setItem('employees', JSON.stringify(employees));
+            alert('Employee added successfully!');
+            this.reset(); // Reset form fields
+            window.location.href = "Employee_details.html"; // Redirect to Employee List page
+          } else {
+            alert('Please fill in all fields!');
+          }
+        });
+    </script>
+</body>
+</html>
+
+

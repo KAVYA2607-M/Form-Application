@@ -1,0 +1,168 @@
+/* {
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    justify-content: center;
+    margin: 20px;
+    color: darkblue;
+    font-size: 35px;
+    font-family: math;
+    font-weight: 600;
+}
+
+form {
+    background-color: burlywood;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px 100px;
+}
+
+form * {
+    margin: 5px;
+    width: 92%;
+}
+
+form input {
+    padding: 10px 10px;
+    font-size: 15px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 5px 10px;
+    background-color: royalblue;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+}
+
+form label {
+    font-size: 20px;
+}
+
+#submit {
+    width: 40%;
+    height: 2rem;
+}
+a {
+    display: block;
+text-decoration: none;}
+#cancel {
+    width: 10%;
+    height: 2rem;
+    margin-left: -50%;
+}
+
+#view {
+    width: 50%;
+    height: 2rem;
+   
+}
+#View{
+    margin-left:-50%;
+}
+
+#btn {
+    display: flex;
+}
+
+
+/*form label{
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    color: gray;
+    user-select: none;
+}
+.d-flex {
+    display: flex;
+}*/
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 0;
+    background-color: #f4f4f4;
+  }
+
+  .container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    height: auto;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  form {
+      background-color: burlywood;
+      padding: 20px;
+      border-radius: 5px;
+      margin: 20px 100px;
+  }
+  
+  form * {
+      margin: 5px;
+      width: 92%;
+  }
+  
+  form input {
+      padding: 10px 10px;
+      font-size: 15px;
+      border: 1px solid gainsboro;
+      border-radius: 5px;
+  }
+  
+  
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4c4fea;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #218838;
+  }
+
+  a {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #007bff;
+      text-decoration: none;
+      background-color: cornsilk;
+      height: 2rem;
+      width: 6.5rem;
+      margin-left: 14rem;
+      padding: 2px;
+      font-size: large;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
